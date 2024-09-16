@@ -11,15 +11,15 @@ app.use(cors());
 const log = console.log;
 const name = "Bhuvan"
 
-app.get('/', (req, res) => {
- // Logging.info(`Connected to mongoDB.`);
- //console.log(chalk.blue('Hello world!'));
-  console.log(`Hello`+name);
+// app.get('/', (req, res) => {
+//   Logging.info(`Connected to mongoDB.`);
+//   Logging.warn('Hello world!');
+//   console.log(`Hello`+name);
   
 
-  res.send('Hello World!');
+//   res.send('Hello World!');
   
-});
+// });
 
 mongoose
     .connect(config.mongo.url, { retryWrites: true, w: 'majority', appName:'Cluster0' })
@@ -33,11 +33,11 @@ mongoose
         Logging.info(err);
     });
 
-app.listen(port, () => { 
-  Logging.log(`Connected to Nodejs.`);
-  console.log(`Server running on port ${port}`);
+// app.listen(port, () => { 
+//   Logging.log(`Connected to Nodejs.`);
+//   console.log(`Server running on port ${port}`);
 
-});
+// });
 
 const startServer = () => {
   app.use((req, res, next) => {
