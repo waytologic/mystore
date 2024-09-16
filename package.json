@@ -1,0 +1,47 @@
+{
+  "name": "mystore",
+  "version": "1.0.0",
+  "description": "My Store,Fully accesable for learing with product, user and payment",
+  "main": "src/server.ts",
+  "scripts": {
+    "build": "rm -rf build/ && tsc",
+    "start": "node build/server.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "waytologic"
+  },
+  "keywords": [
+    "User",
+    "AppzStore",
+    "AppMod",
+    "etc.."
+  ],
+  "author": "Bhuvan",
+  "license": "ISC",
+  "dependencies": {
+    "@types/chalk": "^2.2.0",
+    "@types/cors": "^2.8.17",
+    "@types/jsonwebtoken": "^9.0.6",
+    "chalk": "^4.1.2",
+    "cors": "^2.8.5",
+    "dotenv": "^16.4.5",
+    "express": "^4.21.0",
+    "favicon": "^0.0.2",
+    "http-proxy-middleware": "^3.0.2",
+    "jsonwebtoken": "^9.0.2",
+    "mongodb": "^6.9.0",
+    "mongoose": "^8.6.2",
+    "nodemon": "^3.1.4",
+    "serve-favicon": "^2.5.0",
+    "swagger-jsdoc": "^6.2.8",
+    "swagger-ui-express": "^5.0.1"
+  },
+  "devDependencies": {
+    "@types/express": "^4.17.21",
+    "@types/node": "^22.5.5",
+    "ts-node": "^10.9.2",
+    "typescript": "^5.6.2"
+  }
+}
