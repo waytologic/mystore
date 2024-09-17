@@ -75,7 +75,7 @@ const startServer = () => {
   });
 
   app.get('/api/data', (req: Request, res: Response) => {
-      res.json({ message: 'Hello Bhuvan! Welcome to AppzStores!' });
+      res.json({ message: 'Hello Bhuvan! MonogoDb connected!' });
   });
 
 
