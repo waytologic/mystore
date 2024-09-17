@@ -3,23 +3,19 @@ import cors from 'cors';
 import mongoose from 'mongoose';
 import { config } from './config/config';
 import Logging from './library/logging';
+import swaggerUi from 'swagger-ui-express';
+import swaggerDocument from './swagger.json';
 import http from 'http';
+import UserRoutes from './routes/UserRoutes';
+import path from 'path';
+import favicon from 'serve-favicon';
+
 
 const app = express();
 const port = process.env.PORT || 1947;
 app.use(cors());
 const log = console.log;
 const name = "Bhuvan"
-
-// app.get('/', (req, res) => {
-//   Logging.info(`Connected to mongoDB.`);
-//   Logging.warn('Hello world!');
-//   console.log(`Hello`+name);
-  
-
-//   res.send('Hello World!');
-  
-// });
 
 mongoose
     .connect(config.mongo.url, { retryWrites: true, w: 'majority', appName:'Cluster0' })
@@ -33,11 +29,6 @@ mongoose
         Logging.info(err);
     });
 
-// app.listen(port, () => { 
-//   Logging.log(`Connected to Nodejs.`);
-//   console.log(`Server running on port ${port}`);
-
-// });
 
 const startServer = () => {
   app.use((req, res, next) => {
@@ -54,6 +45,13 @@ const startServer = () => {
 
   app.use(express.urlencoded({ extended: true }));
   app.use(express.json());
+  
+  /** Routes */
+    
+  app.use('/api', UserRoutes);
+    
+  // Specify the path to your favicon
+  app.use(favicon(path.join(__dirname, 'public', 'favicon.ico')));
 
   /** Rules of our API */
   app.use((req, res, next) => {
@@ -75,9 +73,11 @@ const startServer = () => {
   });
 
   app.get('/api/data', (req: Request, res: Response) => {
-      res.json({ message: 'Hello Bhuvan! MonogoDb connected!' });
+      res.json({ message: 'Hello Bhuvan! Welcome to AppzStores!' });
   });
 
+  // Serve Swagger API docs
+  app.use('/api-docs', swaggerUi.serve, swaggerUi.setup(swaggerDocument));
 
   app.use((req, res, next) => {
       const error = new Error('not found');
