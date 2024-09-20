@@ -7,7 +7,7 @@
   },
   "servers": [
     {
-      "url": "http://localhost:1947",
+      "url": "https://mystore-amber.vercel.app",
       "description": "Local server"
     }
   ],
